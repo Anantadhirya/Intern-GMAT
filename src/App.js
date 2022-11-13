@@ -6,7 +6,6 @@ import GPS from "./components/GPS";
 
 export default function App() {
   const [socket, setSocket] = useState();
-  const [data, setData] = useState();
   const [clocks, setClocks] = useState([]);
   const [yaws, setYaws] = useState([]);
   const [pitchs, setPitchs] = useState([]);
@@ -33,7 +32,6 @@ export default function App() {
       socket.on("DATA", (payload) => {
         const dataArray = payload.slice(0, -1).split(",");
 
-        setData(dataArray[0]);
         setClocks((clocks) => [...clocks, dataArray[1]]);
         setYaws((yaws) => [...yaws, Number(dataArray[2])]);
         setPitchs((pitchs) => [...pitchs, Number(dataArray[3])]);
