@@ -16,7 +16,7 @@ export default function Chart({
           line: { color: lineColor },
         },
       ]}
-      layout={{ width: 400, height: 300, title: title }}
+      layout={{ width: 600, height: 400, title: title }}
     />
   );
 }

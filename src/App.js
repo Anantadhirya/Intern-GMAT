@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import Plot from "react-plotly.js";
 import { io } from "socket.io-client";
-import "./App.css";
 import Chart from "./components/Chart";
 import GPS from "./components/GPS";
 
@@ -79,37 +78,55 @@ export default function App() {
   );
   // App
   return (
-    <div>
-      <div>Name: Daniel Anantadhirya Adyawisesa Linan</div>
-      <div>NIM: 22/492989/TK/53975</div>
-      <Plot
-        data={[
-          {
-            x: clocks,
-            y: yaws,
-            name: "Yaw",
-            mode: "lines",
-            line: { color: "red" },
-          },
-          {
-            x: clocks,
-            y: pitchs,
-            name: "Pitch",
-            mode: "lines",
-            line: { color: "lightgreen" },
-          },
-          {
-            x: clocks,
-            y: rolls,
-            name: "Roll",
-            mode: "lines",
-            line: { color: "lightblue" },
-          },
-        ]}
-        layout={{ width: 400, height: 300, title: "Gyroscope" }}
-      />
-      <Chart x={clocks} y={voltages} title="Voltage" />
-      <GPS latitude={latitude} longitude={longitude} />
+    <div className="container">
+      <div className="identitas">
+        <div>Name: Daniel Anantadhirya Adyawisesa Linan</div>
+        <div>NIM: 22/492989/TK/53975</div>
+      </div>
+      <div className="row">
+        <div className="box">
+          <Plot
+            data={[
+              {
+                x: clocks,
+                y: yaws,
+                name: "Yaw",
+                mode: "lines",
+                line: { color: "red" },
+              },
+              {
+                x: clocks,
+                y: pitchs,
+                name: "Pitch",
+                mode: "lines",
+                line: { color: "blue" },
+              },
+              {
+                x: clocks,
+                y: rolls,
+                name: "Roll",
+                mode: "lines",
+                line: { color: "green" },
+              },
+            ]}
+            layout={{ width: 600, height: 400, title: "Gyroscope" }}
+          />
+        </div>
+        <div className="box">
+          <GPS latitude={latitude} longitude={longitude} />
+        </div>
+      </div>
+      <div className="row">
+        <div className="box">
+          <Chart x={clocks} y={altitudes} title="Altitude" />
+        </div>
+        <div className="box">
+          <Chart x={clocks} y={pressures} title="Pressure" />
+        </div>
+        <div className="box">
+          <Chart x={clocks} y={voltages} title="Voltage" />
+        </div>
+      </div>
     </div>
   );
 }
