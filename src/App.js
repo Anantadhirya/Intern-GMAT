@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import Plot from "react-plotly.js";
 import { io } from "socket.io-client";
 import "./App.css";
 import Chart from "./components/Chart";
@@ -63,7 +64,7 @@ export default function App() {
       olderTime.setMinutes(minutes2);
       olderTime.setSeconds(seconds2);
       const day = 24 * 3600 * 1000;
-      const timeRange = 60 * 1000;
+      const timeRange = 30 * 1000;
       if ((currentTime - olderTime + day) % day > timeRange) {
         setClocks((clocks) => clocks.slice(1));
         setYaws((yaws) => yaws.slice(1));
@@ -79,8 +80,35 @@ export default function App() {
   // App
   return (
     <div>
-      <div>Test</div>
-      <Chart x={clocks} y={voltages} title="Voltage Chart" />
+      <div>Name: Daniel Anantadhirya Adyawisesa Linan</div>
+      <div>NIM: 22/492989/TK/53975</div>
+      <Chart x={clocks} y={voltages} title="Voltage" />
+      <Plot
+        data={[
+          {
+            x: clocks,
+            y: yaws,
+            name: "Yaw",
+            mode: "lines",
+            line: { color: "red" },
+          },
+          {
+            x: clocks,
+            y: pitchs,
+            name: "Pitch",
+            mode: "lines",
+            line: { color: "lightgreen" },
+          },
+          {
+            x: clocks,
+            y: rolls,
+            name: "Roll",
+            mode: "lines",
+            line: { color: "lightblue" },
+          },
+        ]}
+        layout={{ width: 400, height: 300, title: "Gyroscope" }}
+      />
       <GPS latitude={latitude} longitude={longitude} />
     </div>
   );
