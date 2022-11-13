@@ -17,7 +17,7 @@ export default function GPS({ latitude, longitude }) {
       scrollWheelZoom={false}
       zoomControl={false}
       dragging={false}
-      style={{ height: 300 }}
+      style={{ width: 400, height: 300 }}
     >
       <Recenter latitude={latitude} longitude={longitude} />
       <TileLayer
