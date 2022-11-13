@@ -13,9 +13,9 @@ export default function GPS({ latitude, longitude }) {
     <MapContainer
       center={[latitude, longitude]}
       zoom={2}
-      doubleClickZoom={false}
-      scrollWheelZoom={false}
-      zoomControl={false}
+      // doubleClickZoom={false}
+      // scrollWheelZoom={false}
+      // zoomControl={false}
       dragging={false}
       style={{ width: 400, height: 300 }}
     >

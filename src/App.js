@@ -82,7 +82,6 @@ export default function App() {
     <div>
       <div>Name: Daniel Anantadhirya Adyawisesa Linan</div>
       <div>NIM: 22/492989/TK/53975</div>
-      <Chart x={clocks} y={voltages} title="Voltage" />
       <Plot
         data={[
           {
@@ -109,6 +108,7 @@ export default function App() {
         ]}
         layout={{ width: 400, height: 300, title: "Gyroscope" }}
       />
+      <Chart x={clocks} y={voltages} title="Voltage" />
       <GPS latitude={latitude} longitude={longitude} />
     </div>
   );
