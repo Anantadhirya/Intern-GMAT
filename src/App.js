@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { io } from "socket.io-client";
 import "./App.css";
 import Chart from "./components/Chart";
+import GPS from "./components/GPS";
 
 export default function App() {
   const [socket, setSocket] = useState();
@@ -10,8 +11,8 @@ export default function App() {
   const [yaws, setYaws] = useState([]);
   const [pitchs, setPitchs] = useState([]);
   const [rolls, setRolls] = useState([]);
-  const [latitude, setLatitude] = useState([]);
-  const [longitude, setLongitude] = useState([]);
+  const [latitude, setLatitude] = useState(0);
+  const [longitude, setLongitude] = useState(0);
   const [voltages, setVoltages] = useState([]);
   const [pressures, setPressures] = useState([]);
   const [altitudes, setAltitudes] = useState([]);
@@ -75,12 +76,12 @@ export default function App() {
     },
     [clocks]
   );
-
   // App
   return (
     <div>
       <div>Test</div>
       <Chart x={clocks} y={voltages} title="Voltage Chart" />
+      <GPS latitude={latitude} longitude={longitude} />
     </div>
   );
 }
