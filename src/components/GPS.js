@@ -12,7 +12,7 @@ export default function GPS({ latitude, longitude }) {
   return (
     <MapContainer
       center={[latitude, longitude]}
-      zoom={4}
+      zoom={2}
       doubleClickZoom={false}
       scrollWheelZoom={false}
       zoomControl={false}
