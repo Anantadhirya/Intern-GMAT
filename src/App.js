@@ -20,7 +20,8 @@ export default function App() {
   useEffect(
     function () {
       if (socket) return;
-      const socketio = io("http://13.113.187.150:5001");
+      // const socketio = io("http://13.113.187.150:5001");
+      const socketio = io("https://gmat-backend.herokuapp.com/");
       setSocket(socketio);
     },
     [socket]
